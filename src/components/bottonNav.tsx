@@ -4,7 +4,16 @@ import { FiPlus } from "react-icons/fi";
 const BottomNav = () => {
   const [clicked, setClicked] = React.useState(false);
   const [amount, setAmount] = React.useState(0);
-  const [datetime, setDatetime] = React.useState(new Date());
+
+  // Get current date and time
+  const now = new Date();
+  const formattedDatetime = `${now.getFullYear()}-${String(
+    now.getMonth() + 1
+  ).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}T${String(
+    now.getHours()
+  ).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+
+  const [datetime, setDatetime] = React.useState(formattedDatetime);
   const [reason, setReason] = React.useState("");
 
   return (
@@ -39,10 +48,10 @@ const BottomNav = () => {
               >
                 Date and Time:
               </label>
-              <input // Convert datetime to string
-                value={datetime.toISOString().slice(0, 16)}
-                onChange={(e) => setDatetime(new Date(e.target.value))}
-                type="datetime-local"
+              <input
+                value={datetime.toLocaleString()}
+                onChange={(e) => setDatetime(e.target.value)}
+                type="Datetime-local"
                 id="datetime"
                 name="datetime"
                 className="mt-1 block w-full py-2 px-3 border-2  border-[#2c3034]  rounded-md shadow-sm focus:outline-none focus:ring-[#2c3034] focus:border-[#fdbf1e]  sm:text-sm"
