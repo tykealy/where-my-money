@@ -30,7 +30,7 @@ const BottomNav = () => {
   return (
     <div className="fixed inset-x-0 bottom-0 bg-[#f3ebea] shadow-lg">
       <Drawer>
-        <DrawerContent className="rounded-2xl border-2 border-[#2c3034]">
+        <DrawerContent className="rounded-2xl border-2 border-[#2c3034] pb-2">
           <DrawerHeader>
             <DrawerTitle>Add Expense</DrawerTitle>
             <DrawerDescription>Add your expenses here</DrawerDescription>
@@ -113,7 +113,7 @@ const BottomNav = () => {
         </DrawerContent>
         <nav
           className={
-            "flex items-center justify-center border-[#2c3034] rounded-2xl border-2"
+            "flex items-center justify-center border-[#2c3034] rounded-2xl border-2 pb-2"
           }
         >
           <DrawerTrigger>
