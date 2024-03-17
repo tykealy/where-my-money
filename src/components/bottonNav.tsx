@@ -102,6 +102,10 @@ const BottomNav = () => {
                   type="submit"
                   style={{ boxShadow: "3px 2px 1px #2c3034" }}
                   className=" border-[#2c3034] rounded-xl bg-[#fdbf1e] border-2 "
+                  onClick={(e) => {
+                    e.preventDefault();
+                    console.log(amount, datetime, reason);
+                  }}
                 >
                   <p className="text-center text-black bg-[#fdbf1e] p-2 rounded-xl">
                     Add
