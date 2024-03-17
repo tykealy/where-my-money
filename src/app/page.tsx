@@ -1,6 +1,7 @@
 import BottomNav from "@/components/bottonNav";
 import SpentCard from "@/components/spentCard";
 import History from "@/components/history";
+import Topbar from "@/components/topBar";
 const data = [
   [
     {
@@ -34,6 +35,7 @@ const data = [
 export default function Home() {
   return (
     <div>
+      <Topbar></Topbar>
       <SpentCard></SpentCard>
       <BottomNav></BottomNav>
       <pre className="mx-4 mt-4 mb-3">History</pre>

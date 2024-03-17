@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import { addDoc, collection } from "firebase/firestore";
+import db from "../../firebaseConfig";
 import {
   Drawer,
   DrawerClose,
@@ -12,6 +14,15 @@ import {
 } from "./ui/drawer";
 import { FiPlus } from "react-icons/fi";
 import { Button } from "./ui/button";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@radix-ui/react-select";
 const BottomNav = () => {
   const [clicked, setClicked] = React.useState(false);
   const [amount, setAmount] = React.useState(0);
@@ -102,9 +113,18 @@ const BottomNav = () => {
                   type="submit"
                   style={{ boxShadow: "3px 2px 1px #2c3034" }}
                   className=" border-[#2c3034] rounded-xl bg-[#fdbf1e] border-2 "
-                  onClick={(e) => {
-                    e.preventDefault();
-                    console.log(amount, datetime, reason);
+                  onClick={async (e) => {
+                    try {
+                      const docRef = await addDoc(collection(db, "records"), {
+                        amount: amount,
+                        datetime: datetime,
+                        reason: reason,
+                      });
+
+                      console.log("Document written with ID: ", docRef.id);
+                    } catch (e) {
+                      console.error("Error adding document: ", e);
+                    }
                   }}
                 >
                   <p className="text-center text-black bg-[#fdbf1e] p-2 rounded-xl">
